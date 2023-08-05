@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>customer data</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container-fluid px-0">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <h1 align="center">Customer List</h1>
+            <h5 align="left"><a th:href="@{/addCustomer}"><button class="btn-btn-primary" >Add Customer</button></a></h5>
+
+<table border="2px" cellspacing="10px" cellpadding="15px" >
+  <tr>
+      <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Action</th>
+  </tr>
+
+     <tr th:each="product:${record}">
+         <td th:text="${product.Id}"></td>
+      <td th:text=${product.Fname}></td>
+       <td th:text="${product.Lname}"></td>
+       <td th:text="${product.Address}"></td>
+       <td th:text="${product.City}"></td>
+       <td th:text="${product.State}"></td>
+       <td th:text="${product.Email}"></td>
+       <td th:text="${product.Phone}"></td>
+       <td>
+           <a th:href="@{/delete/{id}(id=${product.Id})}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16" style="color:red">
+               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
+           </svg></a>
+           <a th:href="@{/updateCustomer/{id}(id=${product.Id})}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+               <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+           </svg></a>
+       </td>
+
+  </tr>
+
+</table>
+    </div>
+    </div>
+    <div class="col-2"></div>
+</div>
+</body>
+</html>
